@@ -1,3 +1,6 @@
+import { productService } from '../services/index.js';
+import { response } from '../helpers/index.js';
+
 /**
  * @function addProduct 
  * @description Add product function
@@ -5,9 +8,14 @@
  * @param (req, res, next)
  * @author [Akshay Mondal]
  */
-export const addProduct = (req, res, next) => {
+export const addProduct = async (req, res, next) => {
     try {
-        res.json({ message: 'Add Product!' });
+        const addProduct = await productService.addProduct(req);
+        if (addProduct.status === true) {
+            await response.successResponse(res, addProduct.data, addProduct.message)
+        } else {
+            await response.errorResponse(res, addProduct.data, addProduct.message)
+        }
     } catch (error) {
         throw error;
     }
@@ -20,9 +28,14 @@ export const addProduct = (req, res, next) => {
  * @param (req, res, next)
  * @author [Akshay Mondal]
  */
-export const getProduct = (req, res, next) => {
+export const getProduct = async (req, res, next) => {
     try {
-        res.json({ message: 'Get all Product!' });
+        const getProduct = await productService.getAllProduct(req)
+        if (getProduct.status === true) {
+            await response.successResponse(res, getProduct.data, getProduct.message)
+        } else {
+            await response.errorResponse(res, getProduct.data, getProduct.message)
+        }
     } catch (error) {
         throw error;
     }
@@ -35,9 +48,14 @@ export const getProduct = (req, res, next) => {
  * @param (req, res, next)
  * @author [Akshay Mondal]
  */
-export const getSingleProduct = (req, res, next) => {
+export const getSingleProduct = async (req, res, next) => {
     try {
-        res.json({ message: 'Get single Product!' });
+        const getProduct = await productService.getSingleProduct(req)
+        if (getProduct.status === true) {
+            await response.successResponse(res, getProduct.data, getProduct.message)
+        } else {
+            await response.errorResponse(res, getProduct.data, getProduct.message)
+        }
     } catch (error) {
         throw error;
     }
@@ -50,9 +68,14 @@ export const getSingleProduct = (req, res, next) => {
  * @param (req, res, next)
  * @author [Akshay Mondal]
  */
-export const updateProduct = (req, res, next) => {
+export const updateProduct = async (req, res, next) => {
     try {
-        res.json({ message: 'Update Product!' });
+        const updateProduct = await productService.updateProduct(req)
+        if (updateProduct.status === true) {
+            await response.successResponse(res, updateProduct.data, updateProduct.message)
+        } else {
+            await response.errorResponse(res, updateProduct.data, updateProduct.message)
+        }
     } catch (error) {
         throw error;
     }
@@ -65,9 +88,14 @@ export const updateProduct = (req, res, next) => {
  * @param (req, res, next)
  * @author [Akshay Mondal]
  */
-export const deleteProduct = (req, res, next) => {
+export const deleteProduct = async (req, res, next) => {
     try {
-        res.json({ message: 'Delete Product!' });
+        const deleteProduct = await productService.deleteProduct(req);
+        if (deleteProduct.status === true) {
+            await response.successResponse(res, deleteProduct.data, deleteProduct.message)
+        } else {
+            await response.errorResponse(res, deleteProduct.data, deleteProduct.message)
+        }
     } catch (error) {
         throw error;
     }

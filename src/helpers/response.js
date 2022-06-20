@@ -1,4 +1,4 @@
-import { constant } from './index.js'
+import { constant } from '../config/index.js'
 
 export const successResponse = async (res, data, message, status = constant.ststusCode.OK) => {
     return res.status(status).json({
